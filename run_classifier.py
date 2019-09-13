@@ -227,7 +227,9 @@ class CBCProcessor(DataProcessor):
 
     def get_test_examples(self, data_dir):
         """Gets a collection of `InputExample`s for prediction."""
-        raise NotImplementedError()
+        return self._create_examples(
+            self._read_tsv(os.path.join(data_dir, "test.tsv")), "test"
+        )
 
     def get_labels(self):
         """Gets the list of labels for this data set."""

@@ -1,11 +1,11 @@
 import pandas as pd
 
 import os
-import argparse, sys
+import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--csv', help='CSV File', type=str)
+parser.add_argument('--csv', help='CSV File', type=str, required=True)
 parser.add_argument('--train', help='Train indexes', type=str)
 parser.add_argument('--dev', help='Dev indexes', type=str)
 parser.add_argument('--output', help='Output Dir', type=str)
@@ -35,8 +35,8 @@ def split_and_save():
         df_train_tsv = pd.DataFrame({
             'id': range(len(df_train)),
             'label': df_train['sentiment'],
-            'alpha':['a']*df_train.shape[0],
-            'text': df_train['review'].replace(r'\n',' ', regex=True)
+            'alpha': ['a']*df_train.shape[0],
+            'text': df_train['review'].replace(r'\n', ' ', regex=True)
         })
 
         df_dev_tsv = pd.DataFrame({

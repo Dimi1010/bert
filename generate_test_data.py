@@ -5,7 +5,7 @@ import argparse, sys
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--csv', help='CSV File', type=str)
+parser.add_argument('--csv', help='CSV File', type=str, required=True)
 parser.add_argument('--output', help='Output Dir', type=str)
 
 args = parser.parse_args()

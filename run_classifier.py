@@ -242,10 +242,14 @@ class CBCProcessor(DataProcessor):
         for (i, line) in enumerate(lines):
             guid = "%s-%s" % (set_type, i)
             try:
-                text_a = line[3]
+                text_a = tokenization.convert_to_unicode(line[3])
             except(IndexError):
                 continue
-            label = line[1]
+
+            if set_type == 'test':
+                label = '-1'
+            else:
+                label = tokenization.convert_to_unicode(line[1])
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=None, label=label)
             )
